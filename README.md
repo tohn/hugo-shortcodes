@@ -52,16 +52,17 @@ Include it like this in your `<head>` [in
 ```html
 <head>
   <!-- CSS -->
-  {{ $fontawesome := resources.Get "css/fontawesome.scss" | toCSS }}
-  {{ $spoiler := resources.Get "css/spoiler.scss" | toCSS }}
-  {{ $css := slice $fontawesome $spoiler | resources.Concat "css/bundle.css" | minify }}
+  {{ $tohn_hugo_shortcodes := resources.Get "css/tohn_hugo_shortcodes.scss" | toCSS }}
+  {{ $css := slice $tohn_hugo_shortcodes | resources.Concat "css/bundle.css" | minify }}
   {{ if ne hugo.Environment "development" -}}
     {{ $css = $css | fingerprint -}}
   {{ end -}}
   <link rel="stylesheet" href="{{ $css.Permalink }}">
 ```
 
-Adjust the variables you need/want in the line with `$css := slice`.
+Adjust the styles you need/want by copying
+[`assets/css/tohn_hugo_shortcodes.scss`][scss] to your `assets/css`
+folder and deleting the lines you don't need/want.
 
 ## Override
 
@@ -243,6 +244,7 @@ Example:
 [icon]: ./layouts/shortcodes/icon.html
 [linkcontrastchecker]: ./layouts/shortcodes/linkcontrastchecker.html
 [sametbh]: https://www.sametbh.com/docs/64-programming/ides/atom/atom-hugo-shortcodes-snippets/
+[scss]: ./assets/css/tohn_hugo_shortcodes.scss
 [spoiler]: ./layouts/shortcodes/spoiler.html
 [spoiler_scss]: ./assets/css/spoiler.scss
 [spoiler_src]: https://oostens.me/posts/hugo-inline-spoiler-shortcode/
