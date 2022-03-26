@@ -113,10 +113,10 @@ Example:
 {{< contrastchecker fcolor="242424" bcolor="FCFCFC" >}}
 ```
 
-### linkcontrastchecker
+### linkcontrastchecker.html
 
-[`linkcontrastchecker`][linkcontrastchecker] is similar to
-[contrastchecker.html](#contrastchecker.html) and uses the [Link Contrast
+[`linkcontrastchecker.html`][linkcontrastchecker] is similar to
+[contrastchecker.html](#contrastcheckerhtml) and uses the [Link Contrast
 Checker by WebAIM][webaim_lcc] to display some ratios of given Link,
 Body Text and Background Color in a table.
 
@@ -206,7 +206,7 @@ CO{{< sub "2" >}}
 
 ### sup.html
 
-Similar to [sub.html](#sub.html), [`sup.html`][sup] can be used to use the
+Similar to [sub.html](#subhtml), [`sup.html`][sup] can be used to use the
 [`sup` HTML tag][html_sup].
 
 Example:
