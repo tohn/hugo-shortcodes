@@ -1,0 +1,22 @@
+{{- /* https://fontawesome.com */ -}}
+{{- /* Set (fa-solid (solid), fa-regular (regular), fa-brands (brands)) */ -}}
+{{- $set := .Get "set" | default "fa-solid" -}}
+{{- /* Icon (https://fontawesome.com/icons) */ -}}
+{{- $icon := .Get "icon" | default "fa-seedling" -}}
+{{- /* Size (fa-(xs|sm|lg|2x|3x|5x|7x|10x) */ -}}
+{{- $size := .Get "size" | default "" -}}
+{{- /* Rotate (fa-(rotate-90|rotate-180|rotate-270|flip-horizontal|flip-vertical|flip-both)) */ -}}
+{{- $rotate := .Get "rot" | default "" -}}
+{{- /* Animate (https://fontawesome.com/docs/web/style/animate) */ -}}
+{{- $animate := .Get "anim" | default "" -}}
+{{- /* Color */ -}}
+{{- $color := .Get "col" | default "" -}}
+{{- /* Accessibility (d, s) */ -}}
+{{- /* https://fontawesome.com/v6/docs/web/dig-deeper/accessibility */ -}}
+{{- $access := .Get "access" | default "d" -}}
+{{- $title := .Get "title" | default "" -}}
+{{- $text := .Get "text" | default "" -}}
+<i class='{{ $set }} {{ $icon }} {{ $size }} {{ $rotate }} {{ $animate }}' {{ with $color }}style='color:{{ . }}'{{ end }} aria-hidden='true' {{ with $title }}{{ . }}{{ end }}></i>
+{{- if eq $access "s" -}}
+<span class="sr-only">{{ $text }}</span>
+{{- end -}}
