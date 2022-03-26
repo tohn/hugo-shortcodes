@@ -71,10 +71,68 @@ one you want to replace in your own shortcode directory
 
 ## Modules
 
+### abbr.html
+
+[`abbr.html`][abbr] is copied from [sametbh][].
+
+It can be used to insert an [`abbr` HTML tag][html_abbr] into your page.
+
+Example:
+
+```go
+{{< abbr title="What The Fuck" text="WTF" >}}
+```
+
+### color.html
+
+[`color.html`][color] can be used to display the color representation
+of a [hex value][color_hex] in your text.
+
+This is one of the (hopefully!) few shortcodes with CSS declarations in
+it (since it would be very impractical to define every hex value
+beforehand).
+
+Example:
+
+```go
+{{< color "#1db954" >}}
+```
+
+### contrastchecker.html
+
+[`contrastchecker.html`][contrastchecker] uses the [Contrast Checker by
+WebAIM][webaim_cc] to display the Contrast Ratio and Passings/Failings
+of [WCAG AA(A)][WCAG] of given Foreground and Background Colors in a
+table.
+
+Of course you can use [CSS to style the table][css_table].
+
+Example:
+
+```go
+{{< contrastchecker fcolor="242424" bcolor="FCFCFC" >}}
+```
+
+### linkcontrastchecker
+
+[`linkcontrastchecker`][linkcontrastchecker] is similar to
+[contrastchecker.html](#contrastchecker.html) and uses the [Link Contrast
+Checker by WebAIM][webaim_lcc] to display some ratios of given Link,
+Body Text and Background Color in a table.
+
+I used a [tables generator][tables_generator] to help me create the
+table.
+
+Example:
+
+```go
+{{< linkcontrastchecker fcolor="242424" bcolor="FCFCFC" lcolor="0A802D" >}}
+```
+
 ### icon.html
 
-This shortcode can be used to include a fontawesome icon to your
-website.
+[`icon.html`][icon] can be used to include [a fontawesome
+icon][fontawesome] to your website.
 
 To use it, we first have to add the Hugo Module for
 fontawesome. Normally we can just declare the module in `config.toml`.
@@ -101,8 +159,8 @@ Afterwards we have to add the module in our `config.toml`:
 ```
 
 We also have to add the SCSS in
-[assets/css/fontawesome.scss][fontawesome_scss]. See [Styling][] how to
-do this.
+[`assets/css/fontawesome.scss`][fontawesome_scss]. See [Styling][] how
+to do this.
 
 Example:
 
@@ -113,8 +171,8 @@ Example:
 
 ### spoiler.html
 
-This shortcode is essentially copied [from Nelis Oostens][spoiler_src]
-(thanks for this!).
+[`spoiler.html`][spoiler] is essentially copied [from Nelis
+Oostens][spoiler_src] (thanks for this!).
 
 It can be used to hide some text (inline or multiline) and reveal it by
 hovering over it.
@@ -132,8 +190,30 @@ etiam furor iste tuus nos eludet?
 {{< /spoiler >}}
 ```
 
-You can find the SCSS in [assets/css/spoiler.scss][spoiler_scss]. See
+You can find the SCSS in [`assets/css/spoiler.scss`][spoiler_scss]. See
 the instructions in [Styling][] how to add this to your website.
+
+### sub.html
+
+Since we can't have HTML code in markdown, [`sub.html`][sub] can be used
+to use the [`sub` HTML tag][html_sub].
+
+Example:
+
+```go
+CO{{< sub "2" >}}
+```
+
+### sup.html
+
+Similar to [sub.html](#sub.html), [`sup.html`][sup] can be used to use the
+[`sup` HTML tag][html_sup].
+
+Example:
+
+```go
+2{{< sup "10" >}}
+```
 
 ## Inspirations
 
@@ -142,13 +222,32 @@ the instructions in [Styling][] how to add this to your website.
 * <https://github.com/parsiya/Hugo-Shortcodes>
 
 [Hugo]: https://gohugo.io
+[Styling]: #styling
+[WCAG]: https://www.w3.org/WAI/standards-guidelines/wcag/
+[abbr]: ./layouts/shortcodes/abbr.html
+[color]: ./layouts/shortcodes/color.html
+[color_hex]: https://htmlcolorcodes.com
+[contrastchecker]: ./layouts/shortcodes/contrastchecker.html
+[css_table]: https://www.w3schools.com/css/css_table.asp
+[fontawesome]: https://fontawesome.com
+[fontawesome_scss]: ./assets/css/fontawesome.scss
+[go_reddit]: https://www.reddit.com/r/golang/comments/b1d0rp/go_mod_issues_getting_the_exact_latest_version/
+[html_abbr]: https://www.w3schools.com/tags/tag_abbr.asp
+[html_sub]: https://www.w3schools.com/tags/tag_sub.asp
+[html_sup]: https://www.w3schools.com/tags/tag_sup.asp
+[hugo_baseof]: https://gohugo.io/templates/base/#define-the-base-template
+[hugo_bundle]: https://gohugo.io/hugo-pipes/bundling/
+[hugo_minify]: https://gohugo.io/hugo-pipes/minification/
 [hugo_mods]: https://gohugo.io/hugo-modules/
 [hugo_shortcodes]: https://gohugo.io/content-management/shortcodes/
-[hugo_minify]: https://gohugo.io/hugo-pipes/minification/
-[hugo_bundle]: https://gohugo.io/hugo-pipes/bundling/
-[hugo_baseof]: https://gohugo.io/templates/base/#define-the-base-template
-[spoiler_src]: https://oostens.me/posts/hugo-inline-spoiler-shortcode/
+[icon]: ./layouts/shortcodes/icon.html
+[linkcontrastchecker]: ./layouts/shortcodes/linkcontrastchecker.html
+[sametbh]: https://www.sametbh.com/docs/64-programming/ides/atom/atom-hugo-shortcodes-snippets/
+[spoiler]: ./layouts/shortcodes/spoiler.html
 [spoiler_scss]: ./assets/css/spoiler.scss
-[Styling]: #styling
-[go_reddit]: https://www.reddit.com/r/golang/comments/b1d0rp/go_mod_issues_getting_the_exact_latest_version/
-[fontawesome_scss]: ./assets/css/fontawesome.scss
+[spoiler_src]: https://oostens.me/posts/hugo-inline-spoiler-shortcode/
+[sub]: ./layouts/shortcodes/sub.html
+[sup]: ./layouts/shortcodes/sup.html
+[tables_generator]: https://www.tablesgenerator.com/html_tables
+[webaim_cc]: https://webaim.org/resources/contrastchecker/
+[webaim_lcc]: https://webaim.org/resources/linkcontrastchecker/
