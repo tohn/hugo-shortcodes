@@ -1,0 +1,3 @@
+---
+- id: missing_browser_support
+  translation: "Dein Browser unterstützt keine Funktion zum Abspielen von (bestimmten) Dateien.<br>Nutze bitte z.B. Chromium oder Firefox."

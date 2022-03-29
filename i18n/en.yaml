@@ -1,0 +1,3 @@
+---
+- id: missing_browser_support
+  translation: "Your browser doesn't support playing (certain) files.<br>Please use Chromium or Firefox."

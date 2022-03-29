@@ -64,11 +64,22 @@ Adjust the styles you need/want by copying
 [`assets/css/tohn_hugo_shortcodes.scss`][scss] to your `assets/css`
 folder and deleting the lines you don't need/want.
 
+## i18n
+
+To also support websites with more than one language (or a different one
+than german or english), we use the [i18n function][hugo_i18n] of Hugo.
+Read more about the [Multilingual Mode][hugo_multilingual] in the docs.
+
+If you want to contribute some translations, feel free to do so :blush:  
+Have a look in the [i18n folder][i18n] and use the file `en.yaml` as a
+starting point.
+
 ## Override
 
 You can override a shortcode by adding a file with the same name as the
 one you want to replace in your own shortcode directory
-(`layouts/shortcodes` for example).
+(`layouts/shortcodes` for example). The same works for SCSS or i18n
+files.
 
 ## Modules
 
@@ -82,6 +93,19 @@ Example:
 
 ```go
 {{< abbr title="What The Fuck" text="WTF" >}}
+```
+
+### audio.html
+
+[`audio.html`][audio] can be used for inserting audio files with the
+[audio HTML tag][html_audio] into your page.
+
+This shortcode makes use of [i18n](#i18n).
+
+Example:
+
+```go
+{{< audio src="example.ogg" src2="example.mp3" >}}
 ```
 
 ### color.html
@@ -216,6 +240,22 @@ Example:
 2{{< sup "10" >}}
 ```
 
+### video.html
+
+[`video.html`][video] can be used for inserting video files with the
+[video HTML tag][html_video] into your page.
+
+An alternative for this shortcode could be
+[hugo-video][video_alternative].
+
+This shortcode makes use of [i18n](#i18n).
+
+Example:
+
+```go
+{{< video src="example.webm" >}}
+```
+
 ## Inspirations
 
 * <https://github.com/aormsby/hugo-shortcodes>
@@ -226,6 +266,7 @@ Example:
 [Styling]: #styling
 [WCAG]: https://www.w3.org/WAI/standards-guidelines/wcag/
 [abbr]: ./layouts/shortcodes/abbr.html
+[audio]: ./layouts/shortcodes/audio.html
 [color]: ./layouts/shortcodes/color.html
 [color_hex]: https://htmlcolorcodes.com
 [contrastchecker]: ./layouts/shortcodes/contrastchecker.html
@@ -234,13 +275,18 @@ Example:
 [fontawesome_scss]: ./assets/css/fontawesome.scss
 [go_reddit]: https://www.reddit.com/r/golang/comments/b1d0rp/go_mod_issues_getting_the_exact_latest_version/
 [html_abbr]: https://www.w3schools.com/tags/tag_abbr.asp
+[html_audio]: https://www.w3schools.com/tags/tag_audio.asp
 [html_sub]: https://www.w3schools.com/tags/tag_sub.asp
 [html_sup]: https://www.w3schools.com/tags/tag_sup.asp
+[html_video]: https://www.w3schools.com/tags/tag_video.asp
 [hugo_baseof]: https://gohugo.io/templates/base/#define-the-base-template
 [hugo_bundle]: https://gohugo.io/hugo-pipes/bundling/
+[hugo_i18n]: https://gohugo.io/functions/i18n/
 [hugo_minify]: https://gohugo.io/hugo-pipes/minification/
 [hugo_mods]: https://gohugo.io/hugo-modules/
+[hugo_multilingual]: https://gohugo.io/content-management/multilingual/
 [hugo_shortcodes]: https://gohugo.io/content-management/shortcodes/
+[i18n]: ./i18n
 [icon]: ./layouts/shortcodes/icon.html
 [linkcontrastchecker]: ./layouts/shortcodes/linkcontrastchecker.html
 [sametbh]: https://www.sametbh.com/docs/64-programming/ides/atom/atom-hugo-shortcodes-snippets/
@@ -251,5 +297,7 @@ Example:
 [sub]: ./layouts/shortcodes/sub.html
 [sup]: ./layouts/shortcodes/sup.html
 [tables_generator]: https://www.tablesgenerator.com/html_tables
+[video]: ./layouts/shortcodes/video.html
+[video_alternative]: https://github.com/martignoni/hugo-video
 [webaim_cc]: https://webaim.org/resources/contrastchecker/
 [webaim_lcc]: https://webaim.org/resources/linkcontrastchecker/

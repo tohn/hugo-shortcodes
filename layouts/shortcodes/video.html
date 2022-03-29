@@ -1,0 +1,8 @@
+{{- $vid := $.Page.Resources.GetMatch (.Get "src") -}}
+{{- $abs := .Get "abs" | default true -}}
+{{- $width := .Get "width" | default "320" -}}
+{{- $height := .Get "height" | default "240" -}}
+<video width="{{ $width }}" height="{{ $height }}" controls>
+  <source src="{{ if $abs }}{{ $vid.Permalink }}{{ else }}{{ $vid.RelPermalink }}{{ end }}" type="{{ $vid.MediaType }}">
+  <p>{{ i18n "missing_browser_support" | safeHTML }}</p>
+</video>

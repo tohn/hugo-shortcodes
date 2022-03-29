@@ -1,0 +1,10 @@
+{{- $audio := $.Page.Resources.GetMatch (.Get "src") -}}
+{{- $audio2 := $.Page.Resources.GetMatch (.Get "src2") -}}
+{{- $abs := .Get "abs" | default true -}}
+<audio controls>
+  <source src="{{ if $abs }}{{ $audio.Permalink }}{{ else }}{{ $audio.RelPermalink }}{{ end }}" type="{{ $audio.MediaType }}">
+{{- if $audio2 -}}
+  <source src="{{ if $abs }}{{ $audio2.Permalink }}{{ else }}{{ $audio2.RelPermalink }}{{ end }}" type="{{ $audio2.MediaType }}">
+{{- end -}}
+  <p>{{ i18n "missing_browser_support" | safeHTML }}</p>
+</audio>
