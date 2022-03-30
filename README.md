@@ -166,7 +166,7 @@ of `6.x`), we have to add this via this command (notice the `@6.x` at
 the end):
 
 ```bash
-hugo mod get -u github.com/fontawesome/font-awesome@6.x
+hugo mod get github.com/FortAwesome/Font-Awesome@6.x
 ```
 
 Afterwards we have to add the module in our `config.toml`:
