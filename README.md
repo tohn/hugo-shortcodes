@@ -180,7 +180,7 @@ Afterwards we have to add the module in our `config.toml`:
       target = "assets/css/fontawesome"
     [[module.imports.mounts]]
       source = "webfonts"
-      target = "static/fonts/fontawesome
+      target = "static/fonts/fontawesome"
 ```
 
 We also have to add the SCSS in
