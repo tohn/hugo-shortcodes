@@ -1,2 +1,2 @@
 {{- /* http://oostens.me/posts/hugo-inline-spoiler-shortcode/ */ -}}
-<span class="spoiler">{{- .Inner | safeHTML -}}</span>
+<span class="spoiler">{{- .Inner | markdownify -}}</span>
