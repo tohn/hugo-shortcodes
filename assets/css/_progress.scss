@@ -1,0 +1,12 @@
+/* scss for progress.html
+ * thanks to https://www.w3schools.com/w3css/w3css_progressbar.asp */
+.progress {
+	color:#000!important;
+	background-color:#f1f1f1!important;
+	border-radius:4px;
+
+	.inner {
+		color:#fff!important;
+		text-align:center!important;
+	}
+}

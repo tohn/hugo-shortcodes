@@ -1,0 +1,12 @@
+{{- $min := .Get "min" | default 0.0 | float -}}
+{{- $cur := .Get "cur" | default 0.0 | float -}}
+{{- $max := .Get "max" | default 1.0 | float -}}
+{{- /* Mode: slash or percent */ -}}
+{{- $mode := .Get "mode" | default "slash" -}}
+{{- $color := .Get "color" | default "#4CAF50" -}}
+{{- $percent := math.Round (mul (div (add $min $cur) (add $min $max)) 100) -}}
+<div class="progress">
+  <div class="progress inner" style="width:{{ $percent }}%;background-color:{{ $color }}!important">
+    {{- if eq $mode "slash" -}}{{ $cur }}/{{ $max }}{{ else }}{{ $percent }}&nbsp;%{{- end -}}
+  </div>
+</div>

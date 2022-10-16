@@ -194,6 +194,18 @@ Example:
 {{< icon set="fa-brands" icon="fa-github" rot="flip-both" anim="fa-fade" >}}
 ```
 
+### progress.html
+
+[`progress.html`][progress] can be used to display a progress bar on
+your page. It is inspired by [W3.CSS Progress Bars][w3] and
+[Bootstrap][].
+
+Example:
+
+```go
+{{< progress cur=3 max=42 color="#bee" mode="percent" >}}
+```
+
 ### spoiler.html
 
 [`spoiler.html`][spoiler] is essentially copied [from Nelis
@@ -262,6 +274,7 @@ Example:
 * <https://github.com/dnb-org/dnb-hugo-shortcodes>
 * <https://github.com/parsiya/Hugo-Shortcodes>
 
+[Bootstrap]: https://getbootstrap.com/docs/5.2/components/progress/
 [Hugo]: https://gohugo.io
 [Styling]: #styling
 [WCAG]: https://www.w3.org/WAI/standards-guidelines/wcag/
@@ -289,6 +302,7 @@ Example:
 [i18n]: ./i18n
 [icon]: ./layouts/shortcodes/icon.html
 [linkcontrastchecker]: ./layouts/shortcodes/linkcontrastchecker.html
+[progress]: ./layouts/shortcodes/progress.html
 [sametbh]: https://www.sametbh.com/docs/64-programming/ides/atom/atom-hugo-shortcodes-snippets/
 [scss]: ./assets/css/tohn_hugo_shortcodes.scss
 [spoiler]: ./layouts/shortcodes/spoiler.html
@@ -299,5 +313,6 @@ Example:
 [tables_generator]: https://www.tablesgenerator.com/html_tables
 [video]: ./layouts/shortcodes/video.html
 [video_alternative]: https://github.com/martignoni/hugo-video
+[w3]: https://www.w3schools.com/w3css/w3css_progressbar.asp
 [webaim_cc]: https://webaim.org/resources/contrastchecker/
 [webaim_lcc]: https://webaim.org/resources/linkcontrastchecker/
