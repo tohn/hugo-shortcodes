@@ -1,24 +1,30 @@
 {{- /* https://webaim.org/resources/contrastchecker/?fcolor=242424&bcolor=FCFCFC&api */ -}}
-{{- $fcolor := .Get "fcolor" -}}
-{{- $bcolor := .Get "bcolor" -}}
-{{- $json := getJSON "https://webaim.org/resources/contrastchecker/?fcolor=" $fcolor "&bcolor=" $bcolor "&api" -}}
-<table>
-  <thead>
-    <tr>
-      <th>ratio</th>
-      <th>AA</th>
-      <th>AALarge</th>
-      <th>AAA</th>
-      <th>AAALarge</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>{{ with $json.ratio }}{{ if gt . 4.5 }}✅ {{.}}{{ else }}❌ {{.}}{{ end }}{{ end }}</td>
-      <td>{{ with $json.AA }}{{ if eq . "pass" }}✅ {{.}}{{ else }}❌ {{.}}{{ end }}{{ end }}</td>
-      <td>{{ with $json.AALarge }}{{ if eq . "pass" }}✅ {{.}}{{ else }}❌ {{.}}{{ end }}{{ end }}</td>
-      <td>{{ with $json.AAA }}{{ if eq . "pass" }}✅ {{.}}{{ else }}❌ {{.}}{{ end }}{{ end }}</td>
-      <td>{{ with $json.AAALarge }}{{ if eq . "pass" }}✅ {{.}}{{ else }}❌ {{.}}{{ end }}{{ end }}</td>
-    </tr>
-  </tbody>
-</table>
+{{- $fcolor := .Get "fcolor" | string -}}
+{{- $bcolor := .Get "bcolor" | string -}}
+{{- with resources.GetRemote (printf "%s%s%s%s%s" "https://webaim.org/resources/contrastchecker/?fcolor=" $fcolor "&bcolor=" $bcolor "&api") -}}
+  {{- with .Err -}}
+    {{- warnf "%s" . -}}
+  {{- else -}}
+    {{- $json := unmarshal .Content -}}
+    <table>
+      <thead>
+        <tr>
+          <th>ratio</th>
+          <th>AA</th>
+          <th>AALarge</th>
+          <th>AAA</th>
+          <th>AAALarge</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ with $json.ratio }}{{ if gt . 4.5 }}✅ {{.}}{{ else }}❌ {{.}}{{ end }}{{ end }}</td>
+          <td>{{ with $json.AA }}{{ if eq . "pass" }}✅ {{.}}{{ else }}❌ {{.}}{{ end }}{{ end }}</td>
+          <td>{{ with $json.AALarge }}{{ if eq . "pass" }}✅ {{.}}{{ else }}❌ {{.}}{{ end }}{{ end }}</td>
+          <td>{{ with $json.AAA }}{{ if eq . "pass" }}✅ {{.}}{{ else }}❌ {{.}}{{ end }}{{ end }}</td>
+          <td>{{ with $json.AAALarge }}{{ if eq . "pass" }}✅ {{.}}{{ else }}❌ {{.}}{{ end }}{{ end }}</td>
+        </tr>
+      </tbody>
+    </table>
+  {{- end -}}
+{{- end -}}

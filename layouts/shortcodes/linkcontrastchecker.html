@@ -1,24 +1,30 @@
 {{- /* https://webaim.org/resources/linkcontrastchecker/?fcolor=242424&bcolor=FCFCFC&lcolor=0A802D&api */ -}}
-{{- $fcolor := .Get "fcolor" -}}
-{{- $bcolor := .Get "bcolor" -}}
-{{- $lcolor := .Get "lcolor" -}}
-{{- $json := getJSON "https://webaim.org/resources/linkcontrastchecker/?fcolor=" $fcolor "&bcolor=" $bcolor "&lcolor=" $lcolor "&api" -}}
+{{- $fcolor := .Get "fcolor" | string -}}
+{{- $bcolor := .Get "bcolor" | string -}}
+{{- $lcolor := .Get "lcolor" | string -}}
 {{- $number := 4.5 -}}
-<table>
-<thead>
-  <tr>
-    <th></th>
-    <th>conformance</th>
-    <th>ratio</th>
-  </tr>
-</thead>
-<tbody>
-{{range $index, $element := $json}}
-  <tr>
-    <td><strong>{{ $index }}</strong></td>
-    <td>{{ with $element.conformance }}{{ if eq . "pass" }}✅ {{.}}{{ else }}❌ {{.}}{{ end }}{{ end }}</td>
-    <td>{{ if eq $index "Link to Body Text" }}{{ $number = 3 }}{{ end }}{{ with $element.ratio }}{{ if gt . $number }}✅ {{.}}{{ else }}❌ {{.}}{{ end }}{{ end }}</td>
-  </tr>
-{{ end }}
-</tbody>
-</table>
+{{- with resources.GetRemote (printf "%s%s%s%s%s%s%s" "https://webaim.org/resources/linkcontrastchecker/?fcolor=" $fcolor "&bcolor=" $bcolor "&lcolor=" $lcolor "&api") -}}
+  {{- with .Err -}}
+    {{- warnf "%s" . -}}
+  {{- else -}}
+    {{- $json := unmarshal .Content -}}
+    <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>conformance</th>
+        <th>ratio</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{range $index, $element := $json}}
+      <tr>
+        <td><strong>{{ $index }}</strong></td>
+        <td>{{ with $element.conformance }}{{ if eq . "pass" }}✅ {{.}}{{ else }}❌ {{.}}{{ end }}{{ end }}</td>
+        <td>{{ if eq $index "Link to Body Text" }}{{ $number = 3 }}{{ end }}{{ with $element.ratio }}{{ if gt . $number }}✅ {{.}}{{ else }}❌ {{.}}{{ end }}{{ end }}</td>
+      </tr>
+    {{ end }}
+    </tbody>
+    </table>
+  {{- end -}}
+{{- end -}}
