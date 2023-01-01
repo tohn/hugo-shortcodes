@@ -1,0 +1,14 @@
+{{- /*
+  Inspiration: https://fryboyter.de/hugo-tote-links-mit-der-wayback-machine-wiederbeleben/
+  Hint: https://discourse.gohugo.io/t/using-shortcode-inside-render-hook/42038/5
+
+  Use this shortcode in your page in combination with markdown reference
+  style links (https://www.markdownguide.org/basic-syntax/#reference-style-links).
+
+  Usage example:
+
+  This is [a link][1].
+
+  [1]: {{% wayback "https://example.org" %}}
+*/ -}}
+https://web.archive.org/web/{{ $.Page.Params.PublishDate.Format "20060102150405" }}/{{ .Get 0 }}

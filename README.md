@@ -268,6 +268,25 @@ Example:
 {{< video src="example.webm" >}}
 ```
 
+### wayback.html
+
+[`wayback.html`][wayback] uses the [Wayback Machine][wayback_machine] to
+simplify the process of reviving links to deleted/moved or otherwise now
+inaccessible sources. Thanks [Fryboyter for the
+inspiration][wayback_inspiration]!
+
+I'm using this shortcode with [reference style links][rsl] in markdown.
+It's also important to notice that we have to use a [different shortcode
+notation][shortcode_notation] (with `%` instead of `<` and `>`).
+
+Example:
+
+```md
+This is [a link][1].
+
+[1]: {{% wayback "https://example.org" %}}
+```
+
 ## Inspirations
 
 * <https://github.com/aormsby/hugo-shortcodes>
@@ -303,8 +322,10 @@ Example:
 [icon]: ./layouts/shortcodes/icon.html
 [linkcontrastchecker]: ./layouts/shortcodes/linkcontrastchecker.html
 [progress]: ./layouts/shortcodes/progress.html
+[rsl]: https://www.markdownguide.org/basic-syntax/#reference-style-links
 [sametbh]: https://www.sametbh.com/docs/64-programming/ides/atom/atom-hugo-shortcodes-snippets/
 [scss]: ./assets/css/tohn_hugo_shortcodes.scss
+[shortcode_notation]: https://discourse.gohugo.io/t/using-shortcode-inside-render-hook/42038/5
 [spoiler]: ./layouts/shortcodes/spoiler.html
 [spoiler_scss]: ./assets/css/spoiler.scss
 [spoiler_src]: https://oostens.me/posts/hugo-inline-spoiler-shortcode/
@@ -314,5 +335,8 @@ Example:
 [video]: ./layouts/shortcodes/video.html
 [video_alternative]: https://github.com/martignoni/hugo-video
 [w3]: https://www.w3schools.com/w3css/w3css_progressbar.asp
+[wayback]: ./layouts/shortcodes/wayback.html
+[wayback_inspiration]: https://fryboyter.de/hugo-tote-links-mit-der-wayback-machine-wiederbeleben/
+[wayback_machine]: https://archive.org
 [webaim_cc]: https://webaim.org/resources/contrastchecker/
 [webaim_lcc]: https://webaim.org/resources/linkcontrastchecker/
