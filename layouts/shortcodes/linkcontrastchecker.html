@@ -3,10 +3,11 @@
 {{- $bcolor := .Get "bcolor" | string -}}
 {{- $lcolor := .Get "lcolor" | string -}}
 {{- $number := 4.5 -}}
-{{- with resources.GetRemote (printf "%s%s%s%s%s%s%s" "https://webaim.org/resources/linkcontrastchecker/?fcolor=" $fcolor "&bcolor=" $bcolor "&lcolor=" $lcolor "&api") -}}
+{{- $url := printf "%s%s%s%s%s%s%s" "https://webaim.org/resources/linkcontrastchecker/?fcolor=" $fcolor "&bcolor=" $bcolor "&lcolor=" $lcolor "&api" -}}
+{{- with try (resources.GetRemote $url) -}}
   {{- with .Err -}}
     {{- warnf "%s" . -}}
-  {{- else -}}
+  {{- else with .Value -}}
     {{- $json := unmarshal .Content -}}
     <table>
     <thead>
@@ -26,5 +27,7 @@
     {{ end }}
     </tbody>
     </table>
+  {{- else -}}
+    {{- warnf "Unable to get remote resource %q" $url -}}
   {{- end -}}
 {{- end -}}
